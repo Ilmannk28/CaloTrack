@@ -1,13 +1,25 @@
+# Virtual environments
 venv/
 __pycache__/
+
+# Python artifacts
 *.pyc
 *.pyo
 *.pyd
+*.log
+
+# DB files
 *.db
 *.sqlite3
-*.log
+
+# Uploads/temp files
 temp_uploads/
-*.h5
+
+# Model files
 *.pt
+*.h5
 *.pkl
+model/
+
+# MacOS
 .DS_Store
