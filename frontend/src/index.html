@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="/scripts/index.js"></script>
+  <title>CaloTrack</title>
+
+  <link rel="icon" href="./public/calotrack.png" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+
+  <!-- Font Awesome 6.4.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <!-- Button skip to content -->
+    <button id="skip-link" class="skip-link">Menuju content utama</button>
+
+    <div class="header-content container">
+      <a class="brand-name__link" href="#/home">
+        <img class="brand-name__link__image"  src="./public/calotrack.png" alt="logo CaloTrack" />
+        <span class="brand-name__link__text">CaloTrack</span>
+      </a>
+
+      <nav id="navigation-drawer" class="header-nav">
+        <ul class="header-navlist">
+          <li><a class="header-navlist__item" href="#/calculate">Hitung Kalori</a></li>
+          <li><a class="header-navlist__item" href="#/predict">Prediksi Kalori</a></li>
+          <li><a class="header-navlist__item" href="#/recommendation">rekomendasi</a></li>
+          <li><a class="header-navlist__item" href="#/articles">Artikel</a></li>
+
+        </ul>
+      </nav>
+
+      <button id="drawer-button" class="drawer-button">☰</button>
+    </div>
+  </header>
+
+  <main tabindex="-1" id="main-content" class="main-content"></main>
+
+  <footer>
+    <div class="footer-content container">
+      <p>&copy; 2024 CaloTrack. CC25-CR356.</p>
+  </footer>
+
+</body>
+
+</html>
