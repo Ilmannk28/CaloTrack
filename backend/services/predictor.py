@@ -12,26 +12,38 @@ calories_dict = {
     'sliced watermelon': 50
 }
 
-# Lokasi model lokal
-base_path = Path(__file__).resolve().parent
-model_dir = base_path.parent / "model"
+# Lokasi penyimpanan model sementara (Railway-friendly)
+model_dir = Path("/tmp/calotrack_model")
 model_path = model_dir / "best.pt"
 
-# URL model di Hugging Face
+# URL model dari Hugging Face
 HUGGINGFACE_MODEL_URL = "https://huggingface.co/ilmannk28/calotrack-model/resolve/main/best.pt"
 
+# Model global (dimuat sekali)
+model = None
+
 def download_model():
+    """Unduh model jika belum tersedia secara lokal"""
     if not model_path.exists():
         print("Model tidak ditemukan. Mengunduh dari Hugging Face...")
         model_dir.mkdir(parents=True, exist_ok=True)
         response = requests.get(HUGGINGFACE_MODEL_URL)
+        if response.status_code != 200:
+            raise RuntimeError(f"Gagal mengunduh model. Status: {response.status_code}")
         with open(model_path, "wb") as f:
             f.write(response.content)
         print("Model berhasil diunduh.")
 
+def load_model():
+    """Muat model hanya sekali"""
+    global model
+    if model is None:
+        download_model()
+        model = YOLO(str(model_path))
+
 def predict_calories(image_path: str):
-    download_model()
-    model = YOLO(str(model_path))
+    """Prediksi kalori dari gambar makanan"""
+    load_model()
     img = cv2.imread(image_path)
     if img is None:
         raise ValueError(f"Gagal membaca gambar dari path: {image_path}")
