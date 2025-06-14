@@ -20,7 +20,6 @@ model_path = model_dir / "best.pt"
 # URL model di Hugging Face
 HUGGINGFACE_MODEL_URL = "https://huggingface.co/ilmannk28/calotrack-model/resolve/main/best.pt"
 
-# Fungsi untuk mengunduh model jika belum ada
 def download_model():
     if not model_path.exists():
         print("Model tidak ditemukan. Mengunduh dari Hugging Face...")
@@ -30,12 +29,9 @@ def download_model():
             f.write(response.content)
         print("Model berhasil diunduh.")
 
-download_model()
-
-# Load model hanya sekali
-model = YOLO(str(model_path))
-
 def predict_calories(image_path: str):
+    download_model()
+    model = YOLO(str(model_path))
     img = cv2.imread(image_path)
     if img is None:
         raise ValueError(f"Gagal membaca gambar dari path: {image_path}")

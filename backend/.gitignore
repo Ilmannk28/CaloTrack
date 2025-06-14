@@ -13,3 +13,5 @@ __pycache__/
 *.pt
 *.pth
 *.onnx
+model/
+*.pt
