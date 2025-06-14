@@ -7,17 +7,18 @@ RUN apt-get update && apt-get install -y \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# membuat direktori kerja
+# Set direktori kerja
 WORKDIR /app
 
-# Salin requirements
+# Copy requirements dan install dependency
 COPY requirements.txt .
-
-# menginstall dependency Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Salin seluruh isi backend ke dalam container
+# Copy semua file ke dalam container
 COPY . .
 
-# menjalankan server FastAPI dengan Uvicorn
+# Expose port 8000 (opsional untuk dokumentasi)
+EXPOSE 8000
+
+# Jalankan Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
