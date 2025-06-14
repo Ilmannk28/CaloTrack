@@ -1,4 +1,3 @@
-# Gunakan base image Python 
 FROM python:3.10-slim
 
 RUN apt-get update && apt-get install -y \
@@ -15,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["python", "main.py"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
