@@ -1,5 +1,5 @@
 // /utils/api.js
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = 'https://web-production-63ef.up.railway.app';
 
 export async function predictImage(imageFile) {
   const formData = new FormData();
