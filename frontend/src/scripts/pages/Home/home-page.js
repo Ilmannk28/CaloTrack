@@ -7,7 +7,7 @@ export default class HomePage {
     async render() {
         return `
         <section class="hero">
-        <img src="../../../public/assets/background.webp" alt="Makanan sehat" class="hero-bg" loading="eager" decoding="async"/>
+        <img src="/assets/background.webp" alt="Makanan sehat" class="hero-bg" loading="eager" decoding="async"/>
             <div class="hero-content">
                 <h1>CaloTrack<br /><span>Pantau Kalorimu Secara Cerdas</span></h1>
                 <p>
