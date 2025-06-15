@@ -20,7 +20,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-UPLOAD_DIR = Path("backend/temp_uploads")
+UPLOAD_DIR = Path("temp_uploads") 
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
 @app.post("/predict-image")
